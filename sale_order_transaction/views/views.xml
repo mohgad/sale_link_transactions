@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='order_lines']" position="after">
+                    <page string="Transactions" name="payment">
+                        <field name="payment_transaction_id" >
+                 
+				<tree>
+                                <field name="reference" widget="many2onebutton" />
+                                <field name="payment_id"/>
+                                <field name="amount"/>
+                                <field name="provider" invisible="1"/>
+                                <field name="acquirer_reference"/>
+				<field name="sale_order_ids" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
